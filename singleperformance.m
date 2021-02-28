@@ -128,7 +128,7 @@ hold on
 plot(velocity(j),hpp,'c.','DisplayName','Parasite Power')
 hold on
 
-plot(velocity(j),hptr,'r.')
+plot(velocity(j),hptr,'r.','DisplayName','Tail Rotor Power')
 hold on
 
 plot(velocity(j),hp,'m.','DisplayName','Total Power')
