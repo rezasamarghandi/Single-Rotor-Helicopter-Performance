@@ -64,6 +64,12 @@ rangs = []
 rcs = []
 lds = []
 radiuss = []
+hpis = []
+hp0s = []
+hpps = []
+hptrs = []
+hps = []
+hpavs = []
 for j in range(len(velocity)):
     v = velocity[j] * 1.6878  # Forward Velocity in ft / s
 
@@ -123,21 +129,25 @@ for j in range(len(velocity)):
     lds.append(ld)
     radius = v ** 2 / (math.sqrt(n ** 2 - 1) * g)  # Turn Radius For specific Load Factor
     radiuss.append(radius)
-    plt.plot(velocity[j], hpi, 'g.')
-
-    plt.plot(velocity[j], hp0, 'b.')
-
-    plt.plot(velocity[j], hpp, 'c.')
-
-    plt.plot(velocity[j], hptr,'r.')
-
-    plt.plot(velocity[j], hp, 'm.')
-
-    plt.plot(velocity[j], hpav, 'k.')
-
+    hpis.append(hpi)
+    hp0s.append(hp0)
+    hpps.append(hpp)
+    hptrs.append(hptr)
+    hps.append(hp)
+    hpavs.append(hpav)
+    
+    
+figure()    
+plt.plot(velocity, hpis, 'g', label='Induced Power')
+plt.plot(velocity, hp0s, 'b', label='Profile Power')
+plt.plot(velocity, hpps, 'c', label='Parasite Power')
+plt.plot(velocity, hptrs,'r', label='Tail Rotor Power')
+plt.plot(velocity, hps, 'm', label='Total Required Power')
+plt.plot(velocity, hpavs, 'k', label='Available Power')
 plt.title('Power Curve')
 plt.xlabel('True Airspeed (kts)')
 plt.ylabel('Power (hp)')
+plt.legend()
 plt.show()
 
 plt.figure()
