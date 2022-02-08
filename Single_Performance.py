@@ -137,7 +137,7 @@ for j in range(len(velocity)):
     hpavs.append(hpav)
     
     
-figure()    
+plt.figure()    
 plt.plot(velocity, hpis, 'g', label='Induced Power')
 plt.plot(velocity, hp0s, 'b', label='Profile Power')
 plt.plot(velocity, hpps, 'c', label='Parasite Power')
