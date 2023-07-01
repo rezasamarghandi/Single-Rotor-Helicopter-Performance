@@ -48,8 +48,8 @@ vtiptr=rtr*omegatr; %Tail Rotor Blade Tip Speed (ft/s)
 
 a=pi*r^2; %Area of The Main Rotor (ft^2)
 atr=pi*rtr^2; %Area of the Tail Rotor (ft^2)
-sigma=nb*chord/(pi*r); %Solidity of The Main Rotor 
-sigmatr=nbtr*chord/(pi*r); %Solidity of The Tail Rotor
+sigma=nb*chord/(2*pi*r); %Solidity of The Main Rotor 
+sigmatr=nbtr*chord/(2*pi*r); %Solidity of The Tail Rotor
 w=m*g; %Weight of The Helicopter (lb*ft/s^2)
 cw=w/(rho*a*vtip^2); %Coefficient of Weight
 
@@ -119,28 +119,37 @@ radius(j)=v^2/(sqrt(n^2-1)*g); %Turn Radius For specific Load Factor
 
 
 
-plot(velocity(j),hpi,'g.','DisplayName','Induced Power')
+hpis(j)=hpi;
+hp0s(j)=hp0;
+hpps(j)=hpp;
+hptrs(j)=hptr;
+hps(j)=hp;
+hpavs(j)=hpav;
+
+end
+
+figure()
+plot(velocity,hpis,'g','DisplayName','Induced Power')
 hold on
 
-plot(velocity(j),hp0,'b.','DisplayName','Profile Power')
+plot(velocity,hp0s,'b','DisplayName','Profile Power')
 hold on
 
-plot(velocity(j),hpp,'c.','DisplayName','Parasite Power')
+plot(velocity,hpps,'c','DisplayName','Parasite Power')
 hold on
 
-plot(velocity(j),hptr,'r.','DisplayName','Tail Rotor Power')
+plot(velocitys,hptrs,'r.','DisplayName','Tail Rotor Power')
 hold on
 
-plot(velocity(j),hp,'m.','DisplayName','Total Power')
+plot(velocity,hps,'m','DisplayName','Total Power')
 hold on
 
-plot(velocity(j),hpav,'k.','DisplayName','Available Power')
+plot(velocity,hpavs,'k','DisplayName','Available Power')
 hold on
 title('Power Curve')
 xlabel('True Airspeed (kts)')
 ylabel('Power (hp)')
 legend('show')
-end
 
 figure
 plot(velocity,descend,'c.')
